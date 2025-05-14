@@ -1,6 +1,7 @@
 package com.SimpleEmployeeManagement.service;
 
 import com.SimpleEmployeeManagement.entities.Employee;
+import com.SimpleEmployeeManagement.repo.DeptRepo;
 import com.SimpleEmployeeManagement.repo.EmpRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,9 @@ public class EmpService {
 
     @Autowired
     EmpRepo empRepo ;
+
+    @Autowired
+    DeptRepo deptRepo;
 
     public Optional<Employee> findById(Long id ){
         Optional<Employee> byId = empRepo.findById(id);
@@ -44,4 +48,9 @@ public class EmpService {
 
         return empRepo.save(employee);
     }
+
+    public List<Object[]> getDepartmentsWithEmployeeCount() {
+        return deptRepo.getDepartmentsWithEmployeeCount();
+    }
+
 }

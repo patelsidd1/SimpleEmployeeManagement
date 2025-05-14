@@ -52,4 +52,9 @@ public class EmpController {
 
     }
 
+    @GetMapping("/departments-count")
+    public List<Object[]> getDepartmentsWithEmployeeCount() {
+        return empService.getDepartmentsWithEmployeeCount();
+    }
+
 }

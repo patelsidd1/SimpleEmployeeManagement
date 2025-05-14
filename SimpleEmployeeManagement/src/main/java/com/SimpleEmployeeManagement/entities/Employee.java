@@ -1,9 +1,6 @@
 package com.SimpleEmployeeManagement.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -20,10 +17,14 @@ public class Employee {
 
     private String name ;
 
-    private String department;
+
 
     private int salary;
 
     private String joiningDate;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "department_id")
+    private Department department;
 
 }
